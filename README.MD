@@ -28,6 +28,15 @@ echo /absolute/path/to/src > src-path.pth
 
 (If someone can help me figure out how to not have to do this, or better yet, how to turn this repo into a pip package people can easily use, that would be very helpful.)
 
+## Run example
+
+```
+(venv) python src/examples/medications.py
+```
+
+Results will be in results/meds_example. Run as many times as you like -- a unique timestamp means a new file will be created each time. 
+
+
 ## Customization
 
 Use `src/examples/medications.py` as an example. 
@@ -37,6 +46,7 @@ You will need to define the following:
 * an iterable of URLs. This can be a list like `["https://example.com/abc", "https://example.com/123"]`, but since many websites follow a predictable URL pattern it is often faster to create a generator function that yields each URL. 
 * a parser callback that takes an HTML string as input, and returns a dict in the form `{"column header name":"cell value"}`. This dict will make up one row of the spreadsheet. 
 * a list of column headers -- these should be the same as the dict keys in the callback function, and should be in the order you want to see them in the final spreadsheet. 
+* a project name (should be a string, avoid spaces and other characters that don't play well with file paths).
 
 It is recommended to use BeautifulSoup for the parser callback (although you could use any libary that can handle the DOM). [Chapter 12 of Automate the Boring Stuff with Python](https://automatetheboringstuff.com/2e/chapter12/) explains this library very well. 
 
